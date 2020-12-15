@@ -1,0 +1,66 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Where To Watch</title>
+  <link rel="icon" href="../static/css/images/icon-play.png">
+  <link href="{{ url_for('static', filename='css/style2.css') }}" type="text/css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@300;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+</head>
+<nav>
+  <div class="heading">
+    <div class="heading-text">
+      <a href="./index.html" ><h1>Where To Watch</h1></a>
+    </div>
+    <form class ="form" method="POST">
+      <div class="search-holder">
+        <div class="search-box">
+          <div>
+            {{ template_form.hidden_tag() }}
+            {{ template_form.name(class_="search-form") }}
+          </div>
+          <div>
+            <button type=submit class="search-button"></button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</nav>
+<body>
+  <header class="hero">
+  </header>
+  <main>
+    <div class="results-heading">
+      <h4>{{ results_count }} results for "{{ search }}"</h4>
+    </div>
+    <section class="results">
+      {% for result in template_results['results'] %}
+      <article class="card">
+        <div class="picture-div">
+          <img class="picture" src="{{ result['picture'] }}">
+          <div class="overlay">
+          </div>
+        </div>
+        <div class="name">
+          <h3>{{ result['name'] }}</h3>
+        </div>
+        <div class="streams">
+          {% for location in result['locations'] %}
+          <div class="stream">
+            <a href="{{ location['url'] }}"><img class="stream-image" src="{{ location['icon'] }}"></a>
+          </div>
+          {% endfor %}
+        </div>
+      </article>
+      {% endfor %}
+    </section>
+  </main>
+  <footer>
+    <h2>Thanks!</h2>
+  </footer>
+</body>
+</html>

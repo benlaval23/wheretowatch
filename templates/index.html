@@ -1,0 +1,38 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Where To Watch</title>
+  <link rel="icon" href="../static/css/images/icon-play.png">
+  <link href="{{ url_for('static', filename='css/style.css') }}" type="text/css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@300;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav>
+    <span class="logo"></span>
+    <span class="about-us"><a href=""></a></a></span>
+  </nav>
+  <header class="hero">
+    <div class="heading">
+      <h1>Where To Watch</h1>
+    </div>
+      <form class ="form" method="POST">
+        <div class="search-box">
+        <div>
+          {{ template_form.hidden_tag() }}
+          {{ template_form.name(class_="search-form") }}
+        </div>
+        <div>
+          <button type=submit class="search-button">Search</button>
+        </div>
+        </div>
+      </form>
+    <div class="heading2">
+      <h2>Find out where to watch any film or series.</h2>
+    </div>
+  </header>
+</body>
+</html>

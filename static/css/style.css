@@ -1,0 +1,139 @@
+* {
+  box-sizing: border-box;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+body {
+  background-color: black;
+  color: white;
+  font-family: 'Nunito';
+  font-size: 16px;
+  margin: 0;
+}
+
+nav {
+  background-color: black;
+  margin: 0;
+  height: 60px;
+  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  padding: 5px;
+}
+
+.logo {
+  grid-column-start: 0;
+  grid-column-end: 0;
+  justify-self: start;
+  text-align: left;
+  margin: 0;
+}
+
+.about-us {
+  grid-column-start: 2;
+  grid-column-end: 2;
+  justify-self: end;
+  text-align: right;
+}
+
+.hero {
+  background-image: url('./images/hero-cinema.jpeg');
+  height: 90%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0 auto;
+}
+
+.search-box {
+  display: grid;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #181818;
+  border-radius: 23px;
+  height: 90px;
+  width: 260px;
+  position: absolute;
+  top: 150px;
+  left: 0;
+  right: 0;
+  grid-template-rows: 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+.search-form {
+  color: white;
+  background-color: #222222;
+  border-radius: 30px;
+  border: 0;
+  width: 250px;
+  height: 36px;
+  grid-row-start: 0;
+  grid-row-start: 0;
+  padding: 15px;
+  transform: color 0 ease 0;
+}
+
+.search-button {
+  color: white;
+  background-color: #842124;
+  border-radius: 30px;
+  border: 0;
+  width: 250px;
+  height: 36px;
+  grid-row-start: 2;
+  grid-row-start: 2;
+  font-size: 16px;
+  font-weight: bold;
+  transform: color 0 ease 0;
+}
+
+.search-button:hover {
+  background-color: #863638;
+}
+
+.search-form:hover {
+  background-color: #3b3b3b;
+}
+
+h3 {
+  left: 20px;
+}
+
+p {
+  left: 20px;
+}
+
+h1 {
+  font-family: 'Sansita Swashed';
+  font-weight: bold;
+  text-align: center;
+}
+
+.heading {
+  margin: 0 auto;
+}
+
+h2 {
+  font-family: Nunito;
+  text-align: center;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.heading2 {
+  margin-top: 160px;
+  margin-bottom: 0;
+  margin-left: 50px;
+  margin-right: 50px;
+}
