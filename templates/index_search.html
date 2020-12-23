@@ -13,7 +13,7 @@
 <nav>
   <div class="heading">
     <div class="heading-text">
-      <a href="./index.html" ><h1>Where To Watch</h1></a>
+      <a href="javascript:window.history.back();" ><h1>Where To Watch</h1></a>
     </div>
     <form class ="form" method="POST">
       <div class="search-holder">
@@ -35,7 +35,8 @@
   </header>
   <main>
     <div class="results-heading">
-      <h4>{{ results_count }} results for "{{ search }}"</h4>
+      <h2>{{ results_count }} results for "{{ search }}"</h2>
+      <h4><b>Tip: </b>click the logos to head to the external website and watch!</h4>
     </div>
     <section class="results">
       {% for result in template_results['results'] %}
@@ -60,7 +61,7 @@
     </section>
   </main>
   <footer>
-    <h2>Thanks!</h2>
+    <h2><a href="mailto:benlaval23@gmail.com">Thanks! Got feedback?</a></h2>
   </footer>
 </body>
 </html>
