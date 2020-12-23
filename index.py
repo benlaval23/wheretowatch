@@ -49,6 +49,8 @@ response = requests.request("GET", url, headers=headers, params=querystring)
 results_dict = json.loads(response.text)
 #APIcall - end
 
+list_of_popular_results = []
+
 
 @app.route('/', methods=["GET", "POST"])
 def home():
@@ -59,6 +61,7 @@ def home():
         response = requests.request(
             "GET", url, headers=headers, params=querystring)
         results_dict = json.loads(response.text)
+        list_of_popular_results.append(results_dict['results'])
         results_count = len(results_dict['results'])
         return render_template('index_search.html', template_results=results_dict, template_form=my_form, search=search, results_count=results_count)
     return render_template('index.html', template_form=my_form)
