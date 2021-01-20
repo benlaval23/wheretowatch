@@ -5,8 +5,12 @@ from flask_sqlalchemy import SQLAlchemy
 import requests
 import json
 from os import environ
+from dotenv import load_dotenv
+import os
+
 
 app = Flask(__name__)
+load_dotenv()
 
 app.config["SECRET_KEY"] = "my_secret"
 
@@ -41,7 +45,7 @@ url = "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup"
 querystring = {"term": None, "country": "uk"}
 
 headers = {
-    'x-rapidapi-key': "53b02ccf6amsha7b882872db07dep11f9afjsndddc84797880",
+    'x-rapidapi-key': os.environ['API_KEY_'],
     'x-rapidapi-host': "utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com"
 }
 
