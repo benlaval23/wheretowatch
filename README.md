@@ -2,6 +2,8 @@
 
 **Find where to stream your chosen film**
 
+My first ever coding project, the code is very messy!
+
 ---
 
 ## Features
@@ -27,7 +29,11 @@
    pip install -r requirements.txt
    ```
 4. Subscribe to Utelly API - https://rapidapi.com/utelly/api/utelly
-5. Run the application:
+5. Update API key
+   ```bash
+   export API_KEY_=<API_KEY>
+   ```
+6. Run the application:
    ```bash
    flask run
    ```
