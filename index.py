@@ -51,17 +51,26 @@ list_of_popular_results = []
 @app.route('/', methods=["GET", "POST"])
 def home():
     my_form = Search()
-    if 'name' in request.form:
-        search = request.form['name']
-        return redirect(url_for('home', name=search))
-    
-    search = request.args.get('name')
-    if search:
-        querystring["term"] = search
-        response = requests.request(
-            "GET", url, headers=headers, params=querystring)
-        results_dict = json.loads(response.text)
-        list_of_popular_results.append(results_dict['results'])
-        results_count = len(results_dict['results'])
-        return render_template('index_search.html', template_results=results_dict, template_form=my_form, search=search, results_count=results_count)
+    if request.method == "POST":
+        if 'name' in request.form:
+            search = request.form['name']
+            # Redirect to the search route with the search term in the path
+            return redirect(url_for('search', name=search))
+
     return render_template('index.html', template_form=my_form)
+
+@app.route('/search/<name>', methods=["GET"])
+def search(name):
+    my_form = Search()
+    querystring = {"term": name, "country": "uk"}
+    response = requests.request("GET", url, headers=headers, params=querystring)
+    results_dict = json.loads(response.text)
+    list_of_popular_results.append(results_dict['results'])
+    results_count = len(results_dict['results'])
+    return render_template(
+        'index_search.html',
+        template_results=results_dict,
+        template_form=my_form,
+        search=name,
+        results_count=results_count
+    )
