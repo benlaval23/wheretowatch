@@ -59,7 +59,7 @@ def home():
 
     return render_template('index.html', template_form=my_form)
 
-@app.route('/search/<name>', methods=["GET"])
+@app.route('/search/<name>', methods=["GET", "POST"])
 def search(name):
     my_form = Search()
     querystring = {"term": name, "country": "uk"}
