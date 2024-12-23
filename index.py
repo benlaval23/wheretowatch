@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from flask_sqlalchemy import SQLAlchemy
@@ -26,18 +26,10 @@ class Searches(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     search = db.Column(db.String(100), index=True, unique=False)
 
-# db.create_all()
-#DBsetup - end
-
-# FORMsetup
-
-
 class Search(FlaskForm):
     name = StringField("Enter film name", render_kw={
                        "placeholder": "Search a film or series..."})
     submit = SubmitField("")
-#FORMsetup - end
-
 
 # APIcall
 url = "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup"
@@ -61,6 +53,10 @@ def home():
     my_form = Search()
     if 'name' in request.form:
         search = request.form['name']
+        return redirect(url_for('home', name=search))
+    
+    search = request.args.get('name')
+    if search:
         querystring["term"] = search
         response = requests.request(
             "GET", url, headers=headers, params=querystring)
@@ -69,9 +65,3 @@ def home():
         results_count = len(results_dict['results'])
         return render_template('index_search.html', template_results=results_dict, template_form=my_form, search=search, results_count=results_count)
     return render_template('index.html', template_form=my_form)
-
-# for result in results_dict['results']:
-#  print(result['name'])
-#  for location in result['locations']:
-#    print(location['display_name'])
-#    print(location['url'])
