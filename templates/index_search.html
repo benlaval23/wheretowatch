@@ -14,7 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@300;700&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
-  <script>
+  <!-- <script>
     (function(h,o,t,j,a,r){
       h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
       h._hjSettings={hjid:2170379,hjsv:6};
@@ -23,7 +23,7 @@
       r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
       a.appendChild(r);
     })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-  </script>
+  </script> -->
     <script>
       window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
@@ -58,10 +58,10 @@
       <h4><b>Tip: </b>click the logos to head to the external website and watch!</h4>
     </div>
     <section class="results">
-      {% for result in template_results['results'] %}
+      {% for result in template_results %}
       <article class="card">
         <div class="picture-div">
-          <img class="picture" src="{{ result['picture'] }}">
+          <img class="picture" src="{{ result['poster'] }}">
           <div class="overlay">
           </div>
         </div>
@@ -69,9 +69,9 @@
           <h3>{{ result['name'] }}</h3>
         </div>
         <div class="streams">
-          {% for location in result['locations'] %}
+          {% for source in result['streaming_services'] %}
           <div class="stream">
-            <a href="{{ location['url'] }}"><img class="stream-image" src="{{ location['icon'] }}"></a>
+            <a href="{{ source['web_url'] }}"><img class="stream-image" src="{{ source['icon'] }}"></a>
           </div>
           {% endfor %}
         </div>
@@ -79,8 +79,5 @@
       {% endfor %}
     </section>
   </main>
-  <footer>
-    <h2><a href="mailto:benlaval23@gmail.com">Thanks! Got feedback?</a></h2>
-  </footer>
 </body>
 </html>
