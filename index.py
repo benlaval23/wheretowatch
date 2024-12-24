@@ -7,10 +7,13 @@ import os
 import logging
 from pprint import pprint
 
-logging.basicConfig(level=logging.DEBUG, 
-                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', 
-                    filename='app.log', 
-                    filemode='w')
+# logging.basicConfig(level=logging.DEBUG, 
+#                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', 
+#                     filename='app.log', 
+#                     filemode='w')
+
+logging.basicConfig(level=logging.DEBUG, handlers=[logging.StreamHandler()], format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
 
 app = Flask(__name__)
 load_dotenv()
